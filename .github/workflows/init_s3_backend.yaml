@@ -13,6 +13,13 @@ jobs:
     env:
       BUCKET_NAME: remote-david-tfstate
     steps:
+      - name: Debug AWS credentials
+        run: |
+          aws sts get-caller-identity
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          
       - name: Checkout Code
         uses: actions/checkout@v2
 
