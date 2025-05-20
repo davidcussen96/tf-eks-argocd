@@ -22,11 +22,11 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.PIPELINE_ROLE }}
-          aws-region: eu-west-1
+          aws-region: us-east-1
 
       - name: Update kubeconfig
         run: |
-          aws eks update-kubeconfig --name ${{ env.CLUSTER_NAME }} --region eu-west-1
+          aws eks update-kubeconfig --name ${{ env.CLUSTER_NAME }} --region us-east-1
 
       - name: Apply ArgoCD Application Manifest
         run: kubectl apply -f ./argocd/manifests/manifest.yaml
