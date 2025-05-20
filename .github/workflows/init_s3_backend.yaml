@@ -6,6 +6,7 @@ on:
 jobs:
   setup-terraform-backend:
     runs-on: ubuntu-latest
+    environment: tf-eks-argocd
     permissions:
       id-token: write
       statuses: write
