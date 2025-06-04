@@ -46,7 +46,14 @@ jobs:
               TF_VAR_iam_user: ${{ secrets.IAM_USER }}
             working-directory: ./infra
 
-          - name: Terraform Apply 
+          # - name: Terraform Apply 
+          #   run: terraform apply -auto-approve
+          #   env: 
+          #     TF_VAR_aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
+          #     TF_VAR_iam_user: ${{ secrets.IAM_USER }}
+          #   working-directory: ./infra
+
+          - name: Terraform Destroy 
             run: terraform apply -auto-approve
             env: 
               TF_VAR_aws_account_id: ${{ secrets.AWS_ACCOUNT_ID }}
