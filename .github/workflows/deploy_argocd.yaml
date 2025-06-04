@@ -6,6 +6,7 @@ on:
 jobs:
   deploy-argocd:
     runs-on: ubuntu-latest
+    environment: tf-eks-argocd
     permissions:
       id-token: write
     steps:
