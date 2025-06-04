@@ -13,6 +13,18 @@ jobs:
           - name: Checkout Code
             uses: actions/checkout@v2
 
+          - run: echo "Role is ${{ secrets.PIPELINE_ROLE }}"
+
+          - name: Is PIPELINE_ROLE set
+            with: # Set the secret as an input
+            pipeline_role: ${{ secrets.PIPELINE_ROLE }}
+            run: |
+              if [ -z "${{ secrets.PIPELINE_ROLE }}" ]; then
+                echo "PIPELINE_ROLE is NOT set"
+              else
+                echo "PIPELINE_ROLE is set"
+              fi
+
           - name: Configure AWS Credentials 
             uses: aws-actions/configure-aws-credentials@v4
             with:
