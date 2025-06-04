@@ -15,6 +15,14 @@ jobs:
 
           - run: echo "Role is ${{ secrets.PIPELINE_ROLE }}"
 
+          - name: Is PIPELINE_ROLE set
+            run: |
+              if [ -z "${{ secrets.PIPELINE_ROLE }}" ]; then
+                echo "PIPELINE_ROLE is NOT set"
+              else
+                echo "PIPELINE_ROLE is set"
+              fi
+
           - name: Configure AWS Credentials 
             uses: aws-actions/configure-aws-credentials@v4
             with:
